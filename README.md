@@ -22,5 +22,7 @@ iOSのアーキテクチャーパターンをちゃんと理解しているか�
 
 ## [MVP](https://github.com/sachiko-kame/architecture_iOS/tree/feature/MVP)
 
+# [Issues](https://github.com/sachiko-kame/architecture_iOS/labels#workspaces/improvement-plan-5e99713e92d4be70c1e29ede/board?repos=255258678)
+
 # 参考
 https://peaks.cc/books/iOS_architecture
