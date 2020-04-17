@@ -19,7 +19,7 @@ protocol PresenterOutput: AnyObject {
     func update()
 }
 
-class Presenter: PresenterInput{
+final class Presenter: PresenterInput{
     
     private(set) var items: [Qiita] = []
     

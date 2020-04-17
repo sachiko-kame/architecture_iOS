@@ -8,9 +8,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
-    private var tableView = UITableView()
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.frame = UIScreen.main.bounds
+        tableView.register(cellType: TableViewCell.self)
+        return tableView
+    }()
     
     private var presenter: PresenterInput!
     func inject(presenter: PresenterInput) {
@@ -19,16 +24,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
+        configureTableView()
+        self.presenter.itemsGet()
     }
     
-    private func setup() {
-        tableView.frame = UIScreen.main.bounds
+    private func configureTableView() {
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
         self.view.addSubview(tableView)
-        tableView.register(cellType: TableViewCell.self)
-        tableView.delegate = self
-        tableView.dataSource = self
-        self.presenter.itemsGet()
     }
 }
 

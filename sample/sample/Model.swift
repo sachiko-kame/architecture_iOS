@@ -13,7 +13,7 @@ protocol ModelInput {
     func fetchUser(completion: @escaping ([Qiita]) -> ())
 }
 
-class Model: ModelInput {
+final class Model: ModelInput {
     
     func fetchUser(completion: @escaping ([Qiita]) -> ()) {
         Session.send(QiitaListRequest()) { result in
