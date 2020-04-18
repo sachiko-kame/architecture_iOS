@@ -1,13 +1,24 @@
 # architecture_iOS
 
 # はじめに
-iOSのアーキテクチャーパターンをちゃんと理解しているか判断してもらうために作成しています！
+iOSのアーキテクチャーパターンをちゃんと理解しているか判断してもらうために作成しています！<br>
+ここはこうした方がいいよなどありましたら『プルリクエスト』お願いします。<br>
+ブランチの使い方自体間違っているのは気にしないで頂けると嬉しいです!<br>
 
+# 動かすまで
+指摘頂いたのでcocoapodの管理方法を変更しました！(MVP、MVVM)<br>
+詳しくはこちらをご覧ください → [その他の決め事1詳細](https://github.com/sachiko-kame/architecture_iOS/wiki/%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%B1%BA%E3%82%81%E4%BA%8B1%E8%A9%B3%E7%B4%B0)<br>
 
-ここはこうした方がいいよなどありましたら『プルリクエスト』お願いします。
+- **MVP**<br>
+[sample]プロジェクトで配下で<br>
+`$ bundle install`<br>
+`$ bundle exec pod install`<br>
 
-
-ブランチの使い方自体間違っているのは気にしないで頂けると嬉しいです!
+- **MVVM**<br>
+[sample]プロジェクトで配下で<br>
+`$ bundle install --path vendor/bundle` ここはなくても大丈夫かもです。<br>
+`$ bundle install`<br>
+`$ bundle exec pod install`<br>
 
 # それぞれの紹介
 ## [MVC](https://github.com/sachiko-kame/architecture_iOS/tree/feature/MVC)
