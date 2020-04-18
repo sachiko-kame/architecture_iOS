@@ -47,7 +47,7 @@ iOSのアーキテクチャーパターンをちゃんと理解しているか�
 **リファクタリングして頂いたコード**<br>
 [uhooi/architecture_iOS](https://github.com/uhooi/architecture_iOS/tree/feature/fix_mvp)
 
-# [Issues](https://github.com/sachiko-kame/architecture_iOS/labels#workspaces/improvement-plan-5e99713e92d4be70c1e29ede/board?repos=255258678)
+# [ZenHub](https://github.com/sachiko-kame/architecture_iOS/labels#workspaces/improvement-plan-5e99713e92d4be70c1e29ede/board?repos=255258678)
 
 # [wiki](https://github.com/sachiko-kame/architecture_iOS/wiki)
 
