@@ -6,16 +6,15 @@
 //  Copyright © 2020 sachiko. All rights reserved.
 //
 
-import UIKit
 import APIKit
 
 protocol ModelInput {
-    func fetchUser(completion: @escaping ([Qiita]) -> ())
+    func fetchItems(completion: @escaping ([Qiita]) -> ())
 }
 
 final class Model: ModelInput {
     
-    func fetchUser(completion: @escaping ([Qiita]) -> ()) {
+    func fetchItems(completion: @escaping ([Qiita]) -> ()) {
         Session.send(QiitaListRequest()) { result in
             switch result {
             case .success(let response):

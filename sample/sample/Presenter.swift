@@ -6,13 +6,13 @@
 //  Copyright © 2020 sachiko. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 protocol PresenterInput {
-    var numberOfItems: Int { get }
-    func itemGet(row: Int) -> Qiita?
-    func itemsGet()
-    func readChange(index: Int, isRead: Bool)
+    var itemCount: Int { get }
+    func getItem(row: Int) -> Qiita?
+    func fetchItems()
+    func readChange(index: Int)
 }
 
 protocol PresenterOutput: AnyObject {
@@ -31,28 +31,25 @@ final class Presenter: PresenterInput{
         self.model = model
     }
  
-    var numberOfItems: Int {
+    var itemCount: Int {
         return items.count
     }
     
-    func itemGet(row: Int) -> Qiita? {
+    func getItem(row: Int) -> Qiita? {
         guard row < items.count else { return nil }
         return items[row]
     }
     
-    func itemsGet() {
-        model.fetchUser() { [weak self] result in
+    func fetchItems() {
+        model.fetchItems() { [weak self] result in
             self?.items = result
-            DispatchQueue.main.async {
-                self?.view.update()
-            }
+            self?.view.update()
         }
     }
     
-    func readChange(index: Int, isRead: Bool) {
-        items[index].isRead = isRead
-        DispatchQueue.main.async {
-            self.view.update()
-        }
+    func readChange(index: Int) {
+        let chagedValue = !(items[index].isRead)
+        items[index].isRead = chagedValue
+        self.view.update()
     }
 }

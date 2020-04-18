@@ -25,7 +25,7 @@ final class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        self.presenter.itemsGet()
+        self.presenter.fetchItems()
     }
     
     private func configureTableView() {
@@ -49,15 +49,16 @@ extension ViewController: UITableViewDelegate {
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return presenter.numberOfItems
+        return presenter.itemCount
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(with: TableViewCell.self, for: indexPath)
         
-        if let item = self.presenter.itemGet(row: indexPath.row){
+        if let item = self.presenter.getItem(row: indexPath.row){
             cell.set(qiita: item)
+            item.isRead == true ? cell.setRead() : cell.setUnread()
             cell.delegate = self
         }else{
             cell.noSet()
@@ -67,14 +68,17 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController:tableViewCellProtocol{
-    func readButtonTap(index: Int, isRead: Bool) {
-        presenter.readChange(index: index, isRead: isRead)
+    func readButtonTap(index: Int) {
+        presenter.readChange(index: index)
     }
 }
 
 extension ViewController: PresenterOutput {
     func update() {
-        tableView.reloadData()
+        self.tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 
