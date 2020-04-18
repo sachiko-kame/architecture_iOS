@@ -63,7 +63,12 @@ extension QiitaListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(with: QiitaTableViewCell.self, for: indexPath)
         let article = self.articles[indexPath.row]
-        cell.setup(title: article.title, isRead: article.isRead, profileImageURLString: article.profile_image_url)
+        // TODO: ここの分岐をなくしたいけど難しい…
+        if article.isRead {
+            cell.setupForRead(title: article.title, profileImageURLString: article.profile_image_url)
+        } else {
+            cell.setupForUnread(title: article.title, profileImageURLString: article.profile_image_url)
+        }
         cell.delegate = self
         return cell
     }

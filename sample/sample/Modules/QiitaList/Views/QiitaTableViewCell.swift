@@ -48,16 +48,28 @@ final class QiitaTableViewCell: UITableViewCell {
     
     // MARK: Other Internal Methods
     
-    func setup(title: String, isRead: Bool, profileImageURLString: String) {
+    func setupForRead(title: String, profileImageURLString: String) {
+        self.readButton.setTitle("既読", for: .normal)
+        self.readButton.backgroundColor = .read
+        setup(title: title, profileImageURLString: profileImageURLString)
+    }
+
+    func setupForUnread(title: String, profileImageURLString: String) {
+        self.readButton.setTitle("未読", for: .normal)
+        self.readButton.backgroundColor = .unread
+        setup(title: title, profileImageURLString: profileImageURLString)
+    }
+    
+    func setupForError() {
+        self.titleLabel.text = "取得に失敗しました"
+        self.titleLabel.textColor = .darkGray
+        self.readButton.isHidden = true
+    }
+    
+    // MARK: Other Private Methods
+    
+    private func setup(title: String, profileImageURLString: String) {
         self.titleLabel.text = title
-        // TODO: タイトルと背景色を `setup()` の引数にすれば分岐をなくせるが、UIは手動でテストすると思うので、そこまでしなくていいかもしれない
-        if isRead {
-            self.readButton.setTitle("既読", for: .normal)
-            self.readButton.backgroundColor = .read
-        } else {
-            self.readButton.setTitle("未読", for: .normal)
-            self.readButton.backgroundColor = .unread
-        }
         self.readButton.isHidden = false
         
         // TODO: 画像取得を別クラスで行って分岐をなくす。ライブラリを使ってもいいと思う
@@ -72,11 +84,5 @@ final class QiitaTableViewCell: UITableViewCell {
                 }
             }
         }.resume()
-    }
-    
-    func setupError() {
-        self.titleLabel.text = "取得に失敗しました"
-        self.titleLabel.textColor = .darkGray
-        self.readButton.isHidden = true
     }
 }
