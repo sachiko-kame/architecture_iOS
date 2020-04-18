@@ -33,7 +33,23 @@ iOSのアーキテクチャーパターンをちゃんと理解しているか�
 
 ## [MVP](https://github.com/sachiko-kame/architecture_iOS/tree/feature/MVP)
 
+**投票結果(合計 票)**
+- 問題ないと思う(%)
+- 許容範囲と思う(%)
+- 問題があると思う(%)
+- 回答だけみたい(%)
+
+※MVPの時は投票10票、投票12票後にコード記述修正しています。🙇‍♀️<br>
+結果に大差はなさそうなので最終結果のみ記載しています。<br>
+
+[twitter投票結果ページ](https://twitter.com/854729/status/1251014938941722624)
+
+**リファクタリングして頂いたコード**<br>
+[uhooi/architecture_iOS](https://github.com/uhooi/architecture_iOS/tree/feature/fix_mvp)
+
 # [Issues](https://github.com/sachiko-kame/architecture_iOS/labels#workspaces/improvement-plan-5e99713e92d4be70c1e29ede/board?repos=255258678)
+
+# [wiki](https://github.com/sachiko-kame/architecture_iOS/wiki)
 
 # 参考
 https://peaks.cc/books/iOS_architecture
