@@ -6,10 +6,8 @@
 //  Copyright © 2020 sachiko. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension NSObject {
-    class var className: String {
-        return String(describing: self)
-    }
+    class var className: String { String(describing: self) }
 }
