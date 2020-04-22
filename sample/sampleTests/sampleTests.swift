@@ -19,7 +19,7 @@ class sampleTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func testPresenterViewUpdate() {
+    func testPresenterViewUpdate() { //機能しているか
         //目的1: view更新すべきところをテストすることでview更新もれを防ぐ(最終テスト前に気づくことでテスト時間を減らす)
         //目的2: view更新が必要以上に呼ばれていないかの確認(最終テスト前に気づくことでテスト時間を減らす)
         
@@ -38,6 +38,19 @@ class sampleTests: XCTestCase {
              */
             XCTAssertTrue(presenterOutputStub.count == 2) // 1 + 1 = 2
         }
+    }
+    
+    func testModelGetItemNumber(){ //modelとapiが上手く動いているかの確認
+        //必要以上にアイテムを取得していないか？　items.append(qiita)を2回繰り返してしまうなど起きていないか?
+        let exp:XCTestExpectation = expectation(description: "非同期処理待機")
+        let model = Model()
+        model.fetchItems(completion: { items in
+            XCTAssertTrue(items.count < 21, "取得できるアイテムが1回21未満であること")
+            //非同期解除
+            exp.fulfill()
+        })
+        //非同期処理待機5秒まで
+        wait(for: [exp], timeout: 5)
     }
 }
 
