@@ -5,6 +5,7 @@
 //  Created by 水野祥子 on 2020/04/17.
 //  Copyright © 2020 sachiko. All rights reserved.
 //
+//参考:https://github.com/pedrohperalta/Articles-iOS-VIPER
 
 import UIKit
 
@@ -14,7 +15,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        window = UIWindow(frame: UIScreen.main.bounds)
+        RootRouter().presentArticlesScreen(in: window!)
         return true
     }
 

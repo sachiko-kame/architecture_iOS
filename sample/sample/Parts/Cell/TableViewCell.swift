@@ -9,17 +9,16 @@
 import UIKit
 
 protocol tableViewCellProtocol:class {
-    func readButtonTap(index:Int, isRead:Bool)
+    func readButtonTap(index:Int)
 }
 
 class TableViewCell: UITableViewCell {
     
-    var qiita:Qiita?
     var delegate:tableViewCellProtocol?
     
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var readButton: UIButton!
+    @IBOutlet private weak var userImageView: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var readButton: UIButton!
     
     
     override func awakeFromNib() {
@@ -30,20 +29,20 @@ class TableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    func setRead(){
+        self.readButton.setTitle("既読", for: .normal)
+        self.readButton.backgroundColor = .read
+    }
+    
+    func setUnread(){
+        self.readButton.setTitle("未読", for: .normal)
+        self.readButton.backgroundColor = .unread
+    }
+    
     func set(qiita:Qiita){
-        self.qiita = qiita
         self.titleLabel.text = qiita.title
         self.titleLabel.textColor = .darkGray
         self.readButton.setTitleColor(.white, for: .normal)
-        
-        if qiita.isRead == true {
-            self.readButton.setTitle("既読", for: .normal)
-            self.readButton.backgroundColor = .read
-        }else{
-            self.readButton.setTitle("未読", for: .normal)
-            self.readButton.backgroundColor = .unread
-        }
-        
         let imgURL = URL(string: qiita.profile_image_url)!
         let session = URLSession(configuration: .default)
         let download = session.dataTask(with: imgURL) { (data, response, error) in
@@ -58,7 +57,6 @@ class TableViewCell: UITableViewCell {
         }
         session.invalidateAndCancel()
         download.resume()
-        
     }
     
     func noSet(){
@@ -70,11 +68,10 @@ class TableViewCell: UITableViewCell {
     static let height:CGFloat = 100
     
     @IBAction func readButtonTap(_ sender: UIButton) {
-        guard let indexPath = (self.superview as! UITableView).indexPath(for: self) else { return }
-            guard let qiitaItem = self.qiita else { return }
-            
-            print(indexPath.row)
+        guard let tableView = (self.superview as? UITableView) else { return }
+        guard let indexPath = tableView.indexPath(for: self) else { return }
         
-            self.delegate?.readButtonTap(index: indexPath.row, isRead:!(qiitaItem.isRead))
+        print(indexPath.row)
+        self.delegate?.readButtonTap(index: indexPath.row)
     }
 }
