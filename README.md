@@ -55,6 +55,10 @@ iOSのアーキテクチャーパターンをちゃんと理解しているか�
 - 問題があると思う(%)
 - 回答だけみたい(%)
 
+## [VIPER(おまけ)](https://github.com/sachiko-kame/architecture_iOS/tree/feature/VIPER)
+
+**投票予定なし**
+
 # [ZenHub](https://github.com/sachiko-kame/architecture_iOS/labels#workspaces/improvement-plan-5e99713e92d4be70c1e29ede/board?repos=255258678)
 
 # [wiki](https://github.com/sachiko-kame/architecture_iOS/wiki)
