@@ -14,7 +14,7 @@ iOSのアーキテクチャーパターンをちゃんと理解しているか�
 `$ bundle install`<br>
 `$ bundle exec pod install`<br>
 
-- **MVVM**<br>
+- **MVVM(ライブラリ未使用)**<br>
 [sample]プロジェクトで配下で<br>
 `$ bundle install --path vendor/bundle` ここはなくても大丈夫かもです。<br>
 `$ bundle install`<br>
@@ -47,7 +47,7 @@ iOSのアーキテクチャーパターンをちゃんと理解しているか�
 **リファクタリングして頂いたコード**<br>
 [uhooi/architecture_iOS](https://github.com/uhooi/architecture_iOS/tree/feature/fix_mvp)
 
-## [MVVM](https://github.com/sachiko-kame/architecture_iOS/blob/feature/MVVM)
+## [MVVM](https://github.com/sachiko-kame/architecture_iOS/tree/feature/MVVM)
 
 **投票結果(合計票)**
 - 問題ないと思う(%)
