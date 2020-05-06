@@ -6,8 +6,29 @@
 //  Copyright © 2020 sachiko. All rights reserved.
 //
 
-import UIKit
+import APIKit
 
-class Model: NSObject {
+protocol ModelProtocol {
+    func fetchItems(completion: @escaping ([Qiita]) -> ())
+}
 
+final class Model: ModelProtocol {
+    
+    func fetchItems(completion: @escaping ([Qiita]) -> ()){
+        Session.send(QiitaListRequest()) { result in
+            switch result {
+            case .success(let response):
+                var items: Array<Qiita> = []
+                
+                for item in response.qiitaItems {
+                    let qiita = Qiita(Item: item)
+                    items.append(qiita)
+                }
+                completion(items)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
