@@ -75,7 +75,6 @@ extension ViewController:tableViewCellProtocol{
 
 extension ViewController: PresenterOutput {
     func update() {
-        self.tableView.reloadData()
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
